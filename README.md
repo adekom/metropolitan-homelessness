@@ -41,29 +41,38 @@ This is a somewhat unique condition -- there are very few CoCs that are smaller 
 The following publicly available data was used to derive homeless population counts for each MSA.
 
 [US Census County Shapefile](https://www.census.gov/cgi-bin/geo/shapefiles/index.php)
+
 This was used to obtain county boundaries. Because coastlines are not represented in the shapefile, the geometry was intersected with the CoC shapefile to generate more accurate land areas (although interior bodies of water such as lakes are not accounted for). Counties are also merged to create MSAs.
 
 [HUD CoC Shapefile](https://www.hudexchange.info/programs/coc/gis-tools/)
+
 This was used to obtain CoC Boundaries. Because the CoC shapefile and the county shapefile come from two different sources, boundaries can differ slightly even when the two shapefiles intend to represent the same geographic area (such as a county). To avoid sliver areas resulting from an intersection of the two shapefiles, the CoC boundaries were rebuilt using the county shapefile. Where CoC and county boundaries are similar, the county boundary is used. This will lead to some unknown margin of error, but it is assumed to be negligible.
 
 [US Census 2017 American Community Survey](https://data.census.gov/)
+
 This was used to obtain general population statistics for each county. Ideally the 2018 ACS would be used in order to match the survey year of the HUD data, but the online data that was available for that year at the time of publishing this was incomplete.
 
 [HUD 2018 Point in Time Count](https://www.hudexchange.info/resource/3031/pit-and-hic-data-since-2007/)
+
 This was used to obtain homeless population statistics for each CoC.
 
 ## Files Generated
 [Continuum of Care.gpkg](https://drive.google.com/open?id=1aYlBJGMMk8CF4_ZBXqwn2_PrPyoLD-Pl)
+
 This shapefile is a rebuilt version of the HUD shapefile with boundaries that more closely follow those of underlying counties.
 
 [County.gpkg](https://drive.google.com/open?id=1Bs6XCIgENnkKaE6mzRuFM_Cl79wbceQS)
+
 This shapefile is a rebuilt version of the Census Bureau shapefile with coastlines based on the HUD shapefile. Each feature includes fields related to general population and homeless population.
 
 [Metropolitan Statistical Area.gpkg](https://drive.google.com/open?id=1b6g8zR7ZxGQY798gTWbsyUZmf0tIVqgu)
+
 This shapefile merges together county boundaries and statistics.
 
 [MSA Homeless Population.csv](https://github.com/adekom/metropolitan-homelessness/blob/master/MSA%20Homeless%20Population.csv)
+
 This tabulation estimates a total homeless population for each Metropolitan Statistical Area.
 
 [MSA Homeless Representation.csv](https://github.com/adekom/metropolitan-homelessness/blob/master/MSA%20Homeless%20Representation.csv)
+
 This tabulation uses the estimates above to generate a “representation ratio” for each MSA. This is calculated by dividing the MSA’s share of the national homeless population by the MSA’s share of the national general population. A value of 1 indicates that the rate of homelessness is equal to the national rate of homelessness. A value of 2 indicates that the rate of homelessness is double the national rate of homelessness, ie, twice as many homeless people per capita.
