@@ -22,7 +22,7 @@ In order to derive homeless population estimates for Metropolitan Statistical Ar
 
 4. Finally, the homeless population of each county is calculated by aggregating the homeless populations of each sub-area that falls within the county’s boundaries. So, for example, Cleveland County has a total homeless population of 520. This includes the 156 people from Oklahoma City CoC as well as the 364 people from Norman/Cleveland County CoC.
 
-Using the process above, we can algorithmically generate homeless estimates for each county in the United States, and those estimates can be aggregated to create total counts for each of the country's 390 MSAs.
+Using the process above, we can algorithmically generate homeless estimates for each county in the United States, and those estimates can be aggregated to create total counts for each of the country's 390 MSAs. Those counts are available in the file named [2018 MSA Homeless Population.csv](https://github.com/adekom/metropolitan-homelessness/blob/master/2018%20MSA%20Homeless%20Population.csv).
 
 ## A Note on Methodology
 The above method for apportioning population is by no means perfect. One big source of error is the assumption that the general population of each county is evenly distributed throughout that county’s area. We know that this is not the case in the real world and that urban, suburban, and rural portions of counties can vary greatly in terms of population density.
@@ -36,6 +36,11 @@ The effect of this inaccurate apportioning of the general population is that hom
 Because homeless populations are apportioned based on the general population of the underlying sub-areas, Bernalillo County not only receives 100% of Albuquerque CoC’s homeless population, it also gets a larger proportion of the Balance of State CoC’s homeless population. This is because the sub-area of the County that is outside of Albuquerque CoC has 446,982 more people than it should.
 
 This is a somewhat unique condition -- there are very few CoCs that are smaller than Counties -- but it exposes a weakness in the approach for apportioning populations across diffrent geographic boundaries. A more accurate way to apportion population would be to use boundaries that denote changes in population density rather than boundaries that represent governmental/administrative areas. One such boundary would be “Urban Areas” as defined by the Census Bureau. However, while the shapefiles for these geographies are available online, the corresponding population counts from the American Community Survey are not, likely because the ACS does not provide the same in-depth breakdown of information as the decennial census.
+
+## Calculating Rates of Homelessness
+A “representation ratio” has also been generated for each MSA. This is calculated by dividing the MSA’s share of the nation’s homeless population by the MSA’s share of the nation’s general population. A value of 1 indicates that the rate of homelessness is equal to the national rate of homelessness. The representation ratios are available in the file named [2018 MSA Homeless Representation.csv](https://github.com/adekom/metropolitan-homelessness/blob/master/2018%20MSA%20Homeless%20Representation.csv).
+
+It's worth noting that with the representation ratios as well, the shortcomings of the apportioning methodology are visible. For MSAs that fall within large CoCs: because the homeless population is apportioned relative to each MSA's general population the rates of homelessness within those MSAs will be almost equal. Homeless population is not 100% correlated to general population (which is exactly what the representation ratio aims to show) which means that among MSAs within a single CoC, the homeless population and therefor the homeless representation ratio are likely to be larger or smaller than what is calculated here.
 
 ## Datasets Used
 The following publicly available data was used to derive homeless population counts for each MSA.
